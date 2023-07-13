@@ -37,7 +37,9 @@
 .main_name{
   font-weight:bold
 }
-
+.main_follower{
+  float:right
+}
 .main_star{
   position: absolute;
   width: 30px;

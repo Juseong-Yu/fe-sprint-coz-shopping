@@ -26,7 +26,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Main data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked}/>}/>
-            <Route path='/products/List' element={<Products />} />
+            <Route path='/products/List' element={<Products data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked}/>} />
             <Route path='/bookmark' element={<Bookmark />} />
           </Routes>
           <Footer />
