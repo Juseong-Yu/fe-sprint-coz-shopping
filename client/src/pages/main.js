@@ -23,7 +23,6 @@ export default function Main({data, bookmarked, setbookmarked}){
       )
     return setbookmarked(tmp)
   }
-
   return (
     <div className='main_container'>
       <h2>상품 리스트</h2>

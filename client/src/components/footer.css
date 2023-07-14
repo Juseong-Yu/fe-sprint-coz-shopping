@@ -4,10 +4,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: grey;
+  color: gray;
   font-size: 12px;
+  border-top: 0.5px solid lightgray;
+  padding-top: 5px;
 }
 
 footer{
-  display: block
+  display: block;
 }
