@@ -5,6 +5,7 @@
   flex-direction: column;
   margin-left: 5vw;
   height: auto;
+
 }
 .main_product_list{
   width: 90vw;
@@ -45,4 +46,58 @@
   width: 30px;
   right: 30px;
   top: 240px;
+}
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 6;
+}
+
+.modal_img{
+  position: absolute;
+  width: 40vw;
+  height: 30vw;
+  text-align: center;
+  top: 20%;
+  left: 30%;
+  border-radius: 5%;
+}
+
+.display_none{
+  display: none;
+}
+
+.modal_title{
+  position: absolute;
+  width: 40vw;
+  height: 30vw;
+  text-align: center;
+  top: 75%;
+  margin-left: 20%;
+  color: white;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+
+.modal_star{
+  position: absolute;
+  text-align: center;
+  top: 74%;
+  left: 30.5%;
+}
+
+.modal_X{
+  position: absolute;
+  text-align: center;
+  top: 22%;
+  left: 67%;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
 }

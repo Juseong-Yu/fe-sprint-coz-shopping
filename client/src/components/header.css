@@ -30,7 +30,8 @@ h1 {
 .menu {
   width: 40px;
   height: 40px;
-  margin-right: 40px;
+  margin-right: 100px;
+    
 }
 
 .menu:hover{
@@ -43,23 +44,39 @@ h1 {
   top: 50px;
   right: 50px;
   z-index: 5;
-  background-color: white;
+  margin-top: 20px;
+  
 }
 
 .menu_nav_li{
   border-collapse: collapse;
   padding: 10px;
-  border: 0.5px solid lightgray;
+  background-color: white;
+  box-shadow: 5px 5px 10px lightgray;
 }
 
 #menu_top{
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
+  border-top-left-radius: 10% 50%;
+  border-top-right-radius: 10% 50%;
+  box-shadow: 10px 5px 10px lightgray;
+}
+#menu_top:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom-color: white;
+	border-top: 0;
+	margin-left: -20px;
+	margin-top: -20px;
 }
 
 #menu_bottom{
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
+  border-bottom-left-radius:10% 50%;
+  border-bottom-right-radius: 10% 50%;
 }
 
 .menu_nav_none{

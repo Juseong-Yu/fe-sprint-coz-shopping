@@ -12,8 +12,11 @@ export default function BookMark({data, bookmarked, setbookmarked}){
   let category_category = data_refined.filter((ele)=>ele.type === 'Category')[0];
   let category_exhibition = data_refined.filter((ele)=>ele.type === 'Exhibition')[0];
   let category_brand = data.filter((ele)=>ele.type === 'Brand' && ele.brand_image_url !== null)[0];
-
+  const [modal, setModal] = useState([])
   const [category, setcategory] = useState('All');
+  function openModal(ele){
+    return setModal(ele)
+  }
   function bookmarkadd(id){
     let tmp = bookmarked.slice()
     tmp.push(id)
@@ -70,9 +73,9 @@ export default function BookMark({data, bookmarked, setbookmarked}){
       .map((ele)=>{
         return (
           <div key={ele.id} className='product_content'>
-            {ele.type === 'Brand' ? <img className='product_images' src={ele.brand_image_url} alt={ele.title}></img>:<img className='product_images' src={ele.image_url} alt={ele.title}></img>}
+            {ele.type === 'Brand' ? <img className='product_images' src={ele.brand_image_url} alt={ele.title} onClick={()=>openModal(ele)}></img>:<img className='product_images' src={ele.image_url} alt={ele.title} onClick={()=>openModal(ele)}></img>}
             {(bookmarked.includes(ele.id)) ? 
-            <img className='product_star' src={filledstar} onClick={()=> bookmarkdel(ele.id)}></img> : <img className="product_star" src={emptystar} onClick={()=> bookmarkadd(ele.id)}></img>}
+            <img className='product_star' src={filledstar} onClick={()=> bookmarkdel(ele.id)} ></img> : <img className="product_star" src={emptystar} onClick={()=> bookmarkadd(ele.id)}></img>}
             <div className='product_title'>
               {ele.type === 'Brand'?<span className='product_name'>{ele.brand_name}</span>:<></>}
               {ele.type === 'Category'?<span className='product_name'>#{ele.title}</span>:<></>}
@@ -90,6 +93,15 @@ export default function BookMark({data, bookmarked, setbookmarked}){
         )
       })}
       </section>
+      <div className={modal.length === 0 ? "display_none" : "modal"} >
+        <div>
+        <img src={modal.image_url === null ? modal.brand_image_url : modal.image_url} className={modal.length === 0 ? "display_none" : 'modal_img'}></img>
+          <div className={modal.length === 0 ? "display_none" : 'modal_X'} onClick={()=>setModal([])}>X</div>
+          <p className={modal.length === 0 ? "display_none" : 'modal_title'}>{modal.title === null ? modal.brand_name : modal.title}</p>
+        </div>
+        {(bookmarked.includes(modal.id)) ?
+        <img className={`${'main_star'} ${modal.length === 0 ? "display_none" : 'modal_star'}`} src={filledstar} onClick={()=> bookmarkdel(modal.id)}></img> : <img className={`${'main_star'} ${modal.length === 0 ? "display_none" : 'modal_star'}`} src={emptystar} onClick={()=> bookmarkadd(modal.id)}></img>}
+      </div>
     </main>
   )
 }
