@@ -11,6 +11,8 @@ import axios from 'axios';
 function App() {
   const [bookmarked, setbookmarked] = useState([])
   const [data, setdata] = useState([])
+  const [modal, setmodal] = useState([])
+
   useEffect(() => {
     // 컴포넌트 생성 시 아래 함수가 실행됩니다.
     axios.get('http://cozshopping.codestates-seb.link/api/v1/products')
@@ -19,15 +21,15 @@ function App() {
     })
     .catch((err) => console.log(err))
   }, []);
-  
+
   return (
     <Router>
       <div className="App">
           <Header />
           <Routes>
-            <Route path='/' element={<Main data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked}/>}/>
-            <Route path='/products/List' element={<Products data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked}/>} />
-            <Route path='/bookmark' element={<Bookmark />} />
+            <Route path='/' element={<Main data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked} setmodal = {setmodal} modal = {modal}/>}/>
+            <Route path='/products/List' element={<Products data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked} setmodal = {setmodal}/>} />
+            <Route path='/bookmark' element={<Bookmark data = {data} bookmarked={bookmarked} setbookmarked={setbookmarked} setmodal = {setmodal}/>} />
           </Routes>
           <Footer />
       </div>
