@@ -8,6 +8,7 @@ export default function Main({data, bookmarked, setbookmarked }){
   let data_refined = data.filter((ele) => ele.image_url!==null && ele.type === 'Product' ).slice(0,4);
   let bookmarkdata_refined = data.filter((ele) => bookmarked.includes(ele.id)).slice(0,4);
   const [modal, setModal] = useState([])
+  const [bookMarkModal, setBookMarkModal] = useState('none')
 
   function openModal(ele){
     return setModal(ele)
@@ -15,10 +16,20 @@ export default function Main({data, bookmarked, setbookmarked }){
   function bookmarkadd(id){
     let tmp = bookmarked.slice()
     tmp.push(id)
+    if(bookMarkModal === 'add'){
+      setBookMarkModal('add2')
+    }else{
+      setBookMarkModal('add');
+    }
     return setbookmarked(tmp)
   }
 
   function bookmarkdel(id){
+    if(bookMarkModal === 'delete'){
+      setBookMarkModal('delete2')
+    }else{
+      setBookMarkModal('delete');
+    }
     let tmp = bookmarked.filter((ele) => {
       return !(ele === id)
     }
@@ -79,6 +90,10 @@ export default function Main({data, bookmarked, setbookmarked }){
         </div>
         {(bookmarked.includes(modal.id)) ?
         <img className={`${'main_star'} ${modal.length === 0 ? "display_none" : 'modal_star'}`} src={filledstar} onClick={()=> bookmarkdel(modal.id)}></img> : <img className={`${'main_star'} ${modal.length === 0 ? "display_none" : 'modal_star'}`} src={emptystar} onClick={()=> bookmarkadd(modal.id)}></img>}
+      </div>
+      <div className='bookmarkmodal'>
+        <p className={bookMarkModal === 'add' ? 'bookmarkmodal_1': bookMarkModal === 'add2' ? 'bookmarkmodal_2' : "display_none"}><img className='bookmarkModalStar' src={filledstar}></img>상품이 북마크에 추가되었습니다.</p>
+        <p className={bookMarkModal === 'delete' ? 'bookmarkmodal_1':bookMarkModal === 'delete2'?'bookmarkmodal_2':"display_none"}><img className='bookmarkModalStar' src={emptystar}></img>상품이 북마크에 제거되었습니다.</p>
       </div>
     </div>
   )

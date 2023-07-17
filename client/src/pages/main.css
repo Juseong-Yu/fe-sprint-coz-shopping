@@ -103,9 +103,40 @@
 }
 
 
-.bye{
-  color:black;
+.bookmarkModalStar{
+  width: 20px;
 }
-.hi{
-  color:black;
+
+@keyframes up{
+  from{
+    right: -30vw;
+  }
+  60%{
+    right: 0vw;
+  }
+  to{
+    right: -30vw;
+  }
+}
+
+.bookmarkmodal_1{
+  position: fixed;
+  display: inline;
+  right: -30vw;
+  top: 94vh;
+  border: 1px solid lightgray;
+  width: 315px;
+  animation-name: up;
+  animation-duration: 4s;
+}
+
+.bookmarkmodal_2{
+  position: fixed;
+  display: inline;
+  right: -30vw;
+  top: 94vh;
+  border: 1px solid lightgray;
+  width: 315px;
+  animation-name: up;
+  animation-duration: 10s;
 }
