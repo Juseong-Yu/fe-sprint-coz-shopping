@@ -102,6 +102,10 @@
   cursor: pointer;
 }
 
+
 .bye{
+  color:black;
+}
+.hi{
   color:black;
 }
